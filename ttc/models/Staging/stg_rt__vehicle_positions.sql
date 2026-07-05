@@ -18,4 +18,3 @@ extracted as (
 
 select *
 from extracted
-where route_id = '102'

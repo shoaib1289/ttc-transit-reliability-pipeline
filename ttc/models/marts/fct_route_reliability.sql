@@ -4,6 +4,7 @@ with performance as (
 
 flagged as (
     select
+        route_id,
         stop_name,
         direction_id,
         delay_minutes,
@@ -12,6 +13,7 @@ flagged as (
 )
 
 select
+    route_id,
     stop_name,
     direction_id,
     count(*)                                     as total_arrivals,
@@ -21,5 +23,5 @@ select
     sum(is_on_time)                              as on_time_count,
     round(100.0 * sum(is_on_time) / count(*), 1) as on_time_pct
 from flagged
-group by stop_name, direction_id
-order by stop_name, direction_id
+group by route_id, stop_name, direction_id
+order by route_id, on_time_pct asc
