@@ -22,7 +22,7 @@ The more interesting finding is *where* it breaks down. The least reliable stops
 
 ## Why this is harder than it looks
 
-The realtime feed reports vehicle *positions*, not *arrivals*. So the core of the project is reconstruction: for each GPS ping, measure its distance to every stop on the route, and when a bus comes within ~50 metres of a stop, treat that moment as an arrival. A stream of GPS dots becomes a set of real arrival events.
+The realtime feed reports vehicle *positions*, not *arrivals*. So the core of the project is reconstruction: for each GPS ping, measure its distance to every stop on the route, and when a bus comes within 50 metres of a stop, treat that moment as an arrival. A stream of GPS dots becomes a set of real arrival events.
 
 Then a second problem: the realtime feed and the schedule use different `trip_id` systems, so they don't join directly. Matching each actual arrival to the *nearest scheduled time at the same stop* solves it — which is also how transit agencies actually measure schedule adherence.
 
@@ -32,7 +32,7 @@ Then a second problem: the realtime feed and the schedule use different `trip_id
 
 ```
   LIVE GPS FEED                         STATIC SCHEDULE (GTFS)
-  (TTC, protobuf, ~30s cadence)         (published, ~6-week cadence)
+  (TTC, protobuf, 30s cadence)         (published, 6-week cadence)
         |                                     |
         v                                     v
   pull_rt.py  -->  raw JSON snapshots    load_static_gtfs.py
@@ -80,7 +80,7 @@ Then a second problem: the realtime feed and the schedule use different `trip_id
 - **Layered dbt modelling** — staging (clean, 1:1), intermediate (the reconstruction logic), marts (delay and aggregation).
 - **Incremental materialization** — the fact table appends only new arrivals as data grows, instead of rebuilding.
 - **Automated data-quality tests** — dbt tests (`not_null`, `unique`, `accepted_range`) catch bad data on every run, including the impossible-delay values found during development.
-- **SCD Type 2 snapshot** — captures schedule changes over time (the TTC republishes every ~6 weeks).
+- **SCD Type 2 snapshot** — captures schedule changes over time (the TTC republishes every 6 weeks).
 - **Direction-aware analysis** — northbound and southbound reliability measured separately.
 - **Orchestration** — an Airflow DAG runs load → transform → test in order, on a schedule, with retries.
 
@@ -94,7 +94,7 @@ Then a second problem: the realtime feed and the schedule use different `trip_id
 - **Schedule/realtime IDs don't reconcile**, so arrivals are matched to the nearest scheduled time at the same stop rather than by `trip_id`.
 - **Outlier guarding.** Matches more than 30 minutes off are discarded as mismatched trips, which kept impossible values (e.g. −83 min) out of the metrics.
 - **Out-of-service hours handled correctly.** Buses running outside scheduled service have no schedule to match against and are excluded rather than producing garbage delays.
-- **Batch loading.** Loading three hours of data (~722k rows) initially ran out of memory; the loader was refactored to process files in batches.
+- **Batch loading.** Loading three hours of data (722k rows) initially ran out of memory; the loader was refactored to process files in batches.
 - **LocalExecutor over CeleryExecutor** for Airflow, a deliberate choice for a single-machine setup on limited RAM.
 
 ---
