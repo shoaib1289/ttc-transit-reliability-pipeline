@@ -1,0 +1,43 @@
+[0m03:03:02.500352 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C20BE160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C3416EE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C3416CD0>]}
+
+
+============================== 03:03:02.503495 | a15d2eee-28ca-4d9c-ba6d-7eb18383e394 ==============================
+[0m03:03:02.503495 [info ] [MainThread]: Running with dbt=1.10.22
+[0m03:03:02.503495 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'fail_fast': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'no_print': 'None', 'target_path': 'None', 'version_check': 'True', 'empty': 'None', 'printer_width': '80', 'quiet': 'False', 'log_path': 'logs', 'log_format': 'default', 'warn_error': 'None', 'write_json': 'True', 'introspect': 'True', 'invocation_command': 'dbt init ttc', 'partial_parse': 'True', 'static_parser': 'True', 'profiles_dir': 'C:\\Users\\shoaib\\.dbt', 'use_experimental_parser': 'False', 'use_colors': 'True', 'indirect_selection': 'eager'}
+[0m03:03:02.585485 [debug] [MainThread]: Starter project path: C:\Users\shoaib\anaconda3\lib\site-packages\dbt\include\starter_project
+[0m03:03:02.628403 [info ] [MainThread]: 
+Your new dbt project "ttc" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m03:03:02.628403 [info ] [MainThread]: Setting up your profile.
+[0m03:03:19.627308 [debug] [MainThread]: Command `dbt init` succeeded at 03:03:19.627308 after 17.27 seconds
+[0m03:03:19.627308 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C20BE160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C44EE760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B5C3416C70>]}
+[0m03:03:19.627308 [debug] [MainThread]: Flushing usage events
+[0m03:03:19.778685 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:09:42.898753 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002172733E100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021728698C10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021728698E80>]}
+
+
+============================== 03:09:42.909142 | 8ed95c6e-de4c-4e56-b91d-a459f83edbba ==============================
+[0m03:09:42.909142 [info ] [MainThread]: Running with dbt=1.10.22
+[0m03:09:42.910609 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'debug': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --select stg_rt__vehicle_positions', 'no_print': 'None', 'version_check': 'True', 'empty': 'False', 'printer_width': '80', 'quiet': 'False', 'log_path': 'logs', 'partial_parse': 'True', 'warn_error': 'None', 'write_json': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'static_parser': 'True', 'profiles_dir': 'C:\\Users\\shoaib\\.dbt', 'use_experimental_parser': 'False', 'use_colors': 'True', 'indirect_selection': 'eager'}
+[0m03:09:42.910609 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\shoaib\ttc-pipeline\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m03:09:42.910609 [debug] [MainThread]: Command `dbt run` failed at 03:09:42.910609 after 0.13 seconds
+[0m03:09:42.910609 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002172733E100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021728698E20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021728698F40>]}
+[0m03:09:42.910609 [debug] [MainThread]: Flushing usage events
+[0m03:09:43.093588 [debug] [MainThread]: An error was encountered while trying to flush usage events

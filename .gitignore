@@ -1,0 +1,27 @@
+﻿# Data files - large, regenerable
+raw/
+data/
+*.duckdb
+*.duckdb.wal
+
+# dbt artifacts
+ttc/target/
+ttc/dbt_packages/
+ttc/logs/
+
+# Airflow
+airflow/logs/
+airflow/dags/__pycache__/
+
+# Python
+__pycache__/
+*.pyc
+
+# Env / secrets
+.env
+*.key
+secrets.*
+
+# OS
+.DS_Store
+Thumbs.db

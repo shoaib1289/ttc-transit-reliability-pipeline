@@ -1,0 +1,7 @@
+ttc:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /opt/airflow/ttc-project/ttc.duckdb
+      threads: 4

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: ttc_raw
+    schema: main
+    tables:
+      - name: raw_rt_vehicle_positions
+      - name: raw_static_routes
+      - name: raw_static_trips
+      - name: raw_static_stops
+      - name: raw_static_stop_times
