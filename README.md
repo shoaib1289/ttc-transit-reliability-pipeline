@@ -2,15 +2,15 @@
 
 How late is your bus, really?
 
-The TTC publishes a schedule (when each bus *should* reach each stop) and a live GPS feed (where every bus is right now). But nothing in either feed tells you when a bus *actually arrived* somewhere — that truth has to be reconstructed. This project does that: it accumulates live GPS over time, works out when buses actually reached their stops, compares that against the published schedule, and turns the result into reliability metrics for a real Toronto bus route.
+The TTC publishes a schedule (when each bus *should* reach each stop) and a live GPS feed (where every bus is right now). But nothing in either feed tells you when a bus *actually arrived* somewhere  that truth has to be reconstructed. This project does that: it accumulates live GPS over time, works out when buses actually reached their stops, compares that against the published schedule, and turns the result into reliability metrics for a real Toronto bus route.
 
-Built end to end — ingestion, warehouse, transformation, testing, a dashboard, and orchestration — using route 102 (Markham Rd) as the working example.
+Built end to end: ingestion, warehouse, transformation, testing, a dashboard, and orchestration  using route 102 (Markham Rd) as the working example.
 
 ---
 
 ## The headline result
 
-Across 1,954 reconstructed arrivals, route 102 runs **on-time 79.6%** of the time, with an average delay of essentially **zero minutes** — buses are balanced between running slightly early and slightly late.
+Across 1,954 reconstructed arrivals, route 102 runs **on-time 79.6%** of the time, with an average delay of essentially **zero minutes**  buses are balanced between running slightly early and slightly late.
 
 The more interesting finding is *where* it breaks down. The least reliable stops cluster at the route's **northern terminus** (Denison St, Bur Oak, Castlemore, Major Mackenzie, Markham GO), where buses tend to run **early**. Early-running is a genuine reliability failure that on-time-percentage alone can hide: you can't catch a bus that already left.
 
@@ -24,7 +24,7 @@ The more interesting finding is *where* it breaks down. The least reliable stops
 
 The realtime feed reports vehicle *positions*, not *arrivals*. So the core of the project is reconstruction: for each GPS ping, measure its distance to every stop on the route, and when a bus comes within 50 metres of a stop, treat that moment as an arrival. A stream of GPS dots becomes a set of real arrival events.
 
-Then a second problem: the realtime feed and the schedule use different `trip_id` systems, so they don't join directly. Matching each actual arrival to the *nearest scheduled time at the same stop* solves it — which is also how transit agencies actually measure schedule adherence.
+Then a second problem: the realtime feed and the schedule use different `trip_id` systems, so they don't join directly. Matching each actual arrival to the *nearest scheduled time at the same stop* solves it which is also how transit agencies actually measure schedule adherence.
 
 ---
 
@@ -77,12 +77,12 @@ Then a second problem: the realtime feed and the schedule use different `trip_id
 ## What it demonstrates
 
 - **Reconstructed data, not a clean dataset.** Actual arrivals are inferred from raw GPS geometry, not read from a feed.
-- **Layered dbt modelling** — staging (clean, 1:1), intermediate (the reconstruction logic), marts (delay and aggregation).
-- **Incremental materialization** — the fact table appends only new arrivals as data grows, instead of rebuilding.
-- **Automated data-quality tests** — dbt tests (`not_null`, `unique`, `accepted_range`) catch bad data on every run, including the impossible-delay values found during development.
-- **SCD Type 2 snapshot** — captures schedule changes over time (the TTC republishes every 6 weeks).
-- **Direction-aware analysis** — northbound and southbound reliability measured separately.
-- **Orchestration** — an Airflow DAG runs load → transform → test in order, on a schedule, with retries.
+- **Layered dbt modelling**: staging (clean, 1:1), intermediate (the reconstruction logic), marts (delay and aggregation).
+- **Incremental materialization**: the fact table appends only new arrivals as data grows, instead of rebuilding.
+- **Automated data-quality tests**:dbt tests (`not_null`, `unique`, `accepted_range`) catch bad data on every run, including the impossible-delay values found during development.
+- **SCD Type 2 snapshot**: captures schedule changes over time (the TTC republishes every 6 weeks).
+- **Direction-aware analysis**: northbound and southbound reliability measured separately.
+- **Orchestration**: an Airflow DAG runs load → transform → test in order, on a schedule, with retries.
 
 ![Airflow DAG](docs/airflow.png)
 
