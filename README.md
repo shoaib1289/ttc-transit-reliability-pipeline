@@ -10,7 +10,7 @@ Built end to end: ingestion, warehouse, transformation, testing, a dashboard, an
 
 ## The headline result
 
-Across 1,954 reconstructed arrivals, route 102 runs **on-time 79.6%** of the time. The average delay is essentially zero — but that's because early and late arrivals roughly cancel out, not because every bus is punctual. Around one in five arrivals still falls outside the on-time window.
+Across 1,954 reconstructed arrivals, route 102 runs **on-time 79.6%** of the time. The average delay is essentially zero but that's because early and late arrivals roughly cancel out, not because every bus is punctual. Around one in five arrivals still falls outside the on-time window.
 
 The more interesting finding is *where* it breaks down. The least reliable stops cluster at the route's **northern terminus** (Denison St, Bur Oak, Castlemore, Major Mackenzie, Markham GO), where buses tend to run **early**. Early-running is a genuine reliability failure that on-time-percentage alone can hide: you can't catch a bus that already left.
 
