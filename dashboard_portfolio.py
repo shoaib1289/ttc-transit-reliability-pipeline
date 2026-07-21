@@ -1,11 +1,4 @@
-"""
-TTC Transit Reliability Pipeline — portfolio dashboard (v2)
-Engineering-first. New in v2: colour-scaled reliability map (pydeck) and
-headway regularity / bunching analysis — the metric frequent-service
-agencies actually manage against.
 
-Run:  streamlit run dashboard_portfolio.py
-"""
 
 import duckdb
 import pandas as pd
@@ -165,7 +158,7 @@ early_tol, late_tol = st.sidebar.slider(
 )
 st.sidebar.caption(
     "Default matches the TTC surface-route standard (1 early / 5 late). "
-    "Move it and watch every number recalculate — the metric is a policy "
+    "Move it and watch every number recalculate  the metric is a policy "
     "choice, not a fact of nature."
 )
 st.sidebar.markdown("---")
@@ -193,7 +186,7 @@ st.markdown(
       <h1>Every bus is late.<br/>Except most of them are early.</h1>
       <p>An end-to-end pipeline that reconstructs TTC arrival events from live GPS feeds,
       models them in dbt, and measures reliability against the published schedule.
-      Built to be run, tested, and scheduled — not just charted.</p>
+      Built to be run, tested, and scheduled, not just charted.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -238,7 +231,7 @@ st.markdown(
     <p class="note">Reconstructing an arrival is the hard part: the realtime feed reports vehicle
     positions, not arrivals. Each event is inferred by matching a GPS reading to its nearest
     scheduled stop within a proximity threshold, then to the nearest scheduled time within a
-    30-minute window — a join that, unconstrained, compares billions of row pairs. Pushing the
+    30-minute window, a join that, unconstrained, compares billions of row pairs. Pushing the
     temporal filter into the join predicate brought it down to millions and inside memory limits.</p>
     """,
     unsafe_allow_html=True,
@@ -278,7 +271,7 @@ st.markdown(
 st.markdown(
     """
     <p class="note"><strong>Why the mean lies.</strong> A mean delay near zero suggests a network
-    running to schedule. It isn't — it's early buses cancelling out late ones. Early running is the
+    running to schedule. It isn't, it's early buses cancelling out late ones. Early running is the
     characteristic failure mode here, and it's the one riders feel worst: a late bus costs you
     minutes, a bus that left early costs you the whole headway.</p>
     """,
@@ -316,7 +309,7 @@ st.markdown(
 
 st.markdown(
     """
-    <p class="note">On frequent routes, riders don't consult schedules — they show up and wait.
+    <p class="note">On frequent routes, riders don't consult schedules they show up and wait.
     What matters is whether buses arrive <em>evenly spaced</em>. The classic failure is
     <strong>bunching</strong>: two buses nose-to-tail, then a gap twice as long as promised.
     Here, each arrival's actual headway is the gap since the previous bus at the same stop and
@@ -437,7 +430,7 @@ if stops_geo is not None:
         st.caption(
             "{:,} stops with ≥3 observed arrivals. Teal = reliable, red = unreliable, "
             "scaled to this view's 10th–90th percentile so variation stays visible. "
-            "Stops below the sample threshold are excluded — a ranking built on one bus is noise.".format(len(geo))
+            "Stops below the sample threshold are excluded a ranking built on one bus is noise.".format(len(geo))
         )
 else:
     st.info(
