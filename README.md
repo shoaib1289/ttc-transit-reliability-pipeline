@@ -1,5 +1,7 @@
 # TTC Transit Reliability Pipeline
 
+**[▶ Live dashboard](https://ttc-transit-reliability.streamlit.app/)** - explore network reliability, route-level performance, and bus bunching interactively.
+
 How late are Toronto's buses, really?
 
 The TTC publishes a schedule (when each bus *should* reach each stop) and a live GPS feed (where every bus is right now). But nothing in either feed tells you when a bus *actually arrived* somewhere  that truth has to be reconstructed. This project does that: it accumulates live GPS over time, works out when buses actually reached their stops, compares that against the published schedule, and turns the result into reliability metrics  for the entire TTC surface network.
